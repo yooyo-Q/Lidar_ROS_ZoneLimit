@@ -14,28 +14,31 @@
 - ROS Noetic（完整安装）
 
 ## 安装
+确保您的系统满足上述环境要求。
 
-1. 确保您的系统满足上述环境要求。
 
-2. 克隆此仓库到您的 ROS 工作空间的 src 目录：
-
-   ```bash
-   cd Lidar_ROS_ZoneLimit
-   catkin_make
-   ```
 ## 运行
 1. 启动 ROS 主节点：
    ```bash
    roscore
    ```
 2. 在另一个终端中，启动激光雷达节点：
+   2.1 catkin_make编译激光雷达驱动
+   ```
+   source devel/setup.bash
+   catkin_make
+   roslaunch lidar_driver lidar_driver.launch   
+   ```
    or
-   通过rqt_bag播放record文件夹
+   2.2 通过bag包播放record
+   rosbag play record/2023-09-14-13-46-30.bag
+
+   
 3. 在另一个终端中，启动区域限制节点：
    ```bash
-   pythoh3 markRegion.py
+   python markRegion.py
    ```
 4. 在另一个终端中，启动障碍物检测节点：
    ```bash
-   pythoh3 obstacleDetection.py
+   python obstacleDetection.py
    ```
