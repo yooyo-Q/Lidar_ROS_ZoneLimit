@@ -4,7 +4,6 @@ from std_msgs.msg import Header, ColorRGBA,String
 from sensor_msgs import point_cloud2
 from visualization_msgs.msg import Marker, MarkerArray
 import math
-import statistics
 import rospy
 import multiprocessing
 from basMark import create_text,create_spheres
@@ -120,7 +119,7 @@ def scan_callback(scan_msg):
 
     for category, elements in categories.items():
         if (len(elements) > 3):
-            median_index = round(statistics.mean(elements))
+            median_index = int(round(sum(elements) / float(len(elements))))
             obstacles_mean_point.append(pc2_elements[median_index])
             vdistance = round(pc2_elements[median_index][0], 2)
             hdistance = round(pc2_elements[median_index][1], 2)
@@ -146,8 +145,6 @@ def scan_callback(scan_msg):
         to_host_pub.publish(str(min_vdistance))
         obstacle_Info = create_text("laser", min_vdistance_str)
         textMark2_pub.publish(obstacle_Info)
-
-
 
 
     # 创建obstacle点云消息
