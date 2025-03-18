@@ -30,7 +30,7 @@
    roslaunch lidar_driver lidar_driver.launch   
    ```
    or
-   2.2 通过bag包播放record
+   通过bag包播放record
    rosbag play record/2023-09-14-13-46-30.bag
 
    

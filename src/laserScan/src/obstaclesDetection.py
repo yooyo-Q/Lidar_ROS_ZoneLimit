@@ -6,7 +6,7 @@ from visualization_msgs.msg import Marker, MarkerArray
 import math
 import rospy
 import multiprocessing
-from basMark import create_text,create_spheres
+from baseMark import create_text,create_spheres
 
 
 def classify_elements(array):
